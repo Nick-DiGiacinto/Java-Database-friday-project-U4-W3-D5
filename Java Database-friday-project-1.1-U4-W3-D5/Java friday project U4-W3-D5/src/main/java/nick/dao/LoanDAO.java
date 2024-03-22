@@ -10,6 +10,10 @@ public class LoanDAO {
     public LoanDAO(EntityManager em) {
         this.em = em;
     }
+    public Loan findById(long id) {
+        Loan loan = em.find(Loan.class, id);
+        return loan;
+    }
 
     public void save(Loan loan) {
         EntityTransaction tx = em.getTransaction();
@@ -19,8 +23,4 @@ public class LoanDAO {
         System.out.println("Loan saved successfully");
     }
 
-    public Loan findById(long id) {
-        Loan loan = em.find(Loan.class, id);
-        return loan;
-    }
 }

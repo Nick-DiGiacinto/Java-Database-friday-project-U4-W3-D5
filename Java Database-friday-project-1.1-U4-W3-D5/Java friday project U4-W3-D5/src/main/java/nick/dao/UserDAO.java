@@ -10,6 +10,10 @@ public class UserDAO {
     public UserDAO(EntityManager em) {
         this.em = em;
     }
+    public User findById(long badgenumber) {
+        User user = em.find(User.class, badgenumber);
+        return user;
+    }
 
     public void save(User user) {
         EntityTransaction tx = em.getTransaction();
@@ -19,8 +23,4 @@ public class UserDAO {
         System.out.println("User saved successfully");
     }
 
-    public User findById(long badgenumber) {
-        User user = em.find(User.class, badgenumber);
-        return user;
-    }
 }
